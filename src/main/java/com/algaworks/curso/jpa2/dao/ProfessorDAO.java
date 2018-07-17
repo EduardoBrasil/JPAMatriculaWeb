@@ -22,7 +22,7 @@ public class ProfessorDAO implements Serializable
       return manager.find(Professor.class, codigo);
    }
    
-   public void salvar() {  
+   public void salvar(Professor professor) {  
        manager.merge(professor);
      }
    
