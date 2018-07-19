@@ -11,12 +11,12 @@ import com.algaworks.curso.jpa2.modelo.Professor;
 import com.algaworks.curso.jpa2.service.NegocioException;
 import com.algaworks.curso.jpa2.util.jpa.Transactional;
 
-public class ProfessorDAO implements Serializable
-{
+public class ProfessorDAO implements Serializable{
+    
    private static final long serialVersionUID = 1L;
 
    @Inject
-   EntityManager manager;
+   private EntityManager manager;
    
    public Professor buscarPeloCodigo(Long codigo) {
       return manager.find(Professor.class, codigo);
@@ -26,15 +26,13 @@ public class ProfessorDAO implements Serializable
        manager.merge(professor);
      }
    
-   public Professor professor;
-   
    @SuppressWarnings("unchecked")
-   List<Professor> buscarTodos(){
+  public List<Professor> buscarTodos(){
       return manager.createQuery("from Professor").getResultList();
    }
   
    @Transactional
-   public void excluir()throws NegocioException{
+   public void excluir(Professor professor)throws NegocioException{
        professor = buscarPeloCodigo(professor.getCodigo());
        
        try {

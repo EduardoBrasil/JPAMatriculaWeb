@@ -35,7 +35,7 @@ public class PesquisaAlunoBean implements Serializable
        alunos = alunoDAO.buscarTodos();
     }
     
-    public void excluir() {
+    public void excluir()  throws NegocioException{
         try {
             alunoDAO.excluir(alunoSelecionado);
             this.alunos.remove(alunoSelecionado);
