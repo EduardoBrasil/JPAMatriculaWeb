@@ -37,7 +37,7 @@ public class CadastroProfessorBean implements Serializable
             this.cadastroProfessor.salvar(professor);
             FacesUtil.addSuccessMessage("Professor cadastrado com sucesso");
         }catch(NegocioException e) {
-            FacesUtil.addSuccessMessage(e.getMessage());
+            FacesUtil.addErrorMessage(e.getMessage());
         }
         
         this.limpar();

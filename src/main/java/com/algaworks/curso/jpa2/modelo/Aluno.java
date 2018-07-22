@@ -1,9 +1,13 @@
 package com.algaworks.curso.jpa2.modelo;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Aluno {
@@ -11,6 +15,7 @@ public class Aluno {
     private long codigo;
     private String nome;
     private String matricula;
+    private List<Turma> turmas;
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -42,6 +47,18 @@ public class Aluno {
     public void setMatricula(String matricula)
     {
         this.matricula = matricula;
+    }
+
+    @OneToMany
+    @JoinColumn(name="codigo_Turma")
+    public List<Turma> getTurmas()
+    {
+        return turmas;
+    }
+
+    public void setTurmas(List<Turma> turmas)
+    {
+        this.turmas = turmas;
     }
 
     @Override
