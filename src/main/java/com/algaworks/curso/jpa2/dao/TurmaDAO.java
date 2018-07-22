@@ -28,7 +28,7 @@ public class TurmaDAO implements Serializable
     }
     
     @SuppressWarnings("unckeded")
-    private List<Turma> buscarTodos(){
+    public List<Turma> buscarTodos(){
         return manager.createQuery("From Turma").getResultList();
     }
     
