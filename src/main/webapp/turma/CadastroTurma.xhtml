@@ -28,8 +28,6 @@
 	    	</p:toolbar>
 	    	
 			<p:panelGrid columns="2" id="painel" style="width: 100%" columnClasses="rotulo, campo">
-				<p:outputLabel value="Código" for="codigo" rendered="#{cadastroTurmaBean.isTeste()}" />
-			    <p:outputLabel id="codigo" value="#{cadastroTurmaBean.turma.codigo}" rendered="#{cadastroTurmaBean.isTeste()}" />
 			
 				<p:outputLabel value="Descrição" for="descricao"/>
 			    <p:inputText id="descricao" size="50" maxlength="50" value="#{cadastroTurmaBean.turma.descricao}" />
