@@ -1,24 +1,22 @@
 package com.algaworks.curso.jpa2.modelo;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Turma
+public class Matricula 
 {
-
     private long codigo;
-    private String descricao;
-    private List <Matricula> matriculas;
+    private String observacao;
+    private Aluno aluno;
+    private Turma turma;
+    private String pagamento;
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy =GenerationType.IDENTITY)
     public long getCodigo()
     {
         return codigo;
@@ -27,26 +25,42 @@ public class Turma
     {
         this.codigo = codigo;
     }
-    public String getDescricao()
+    
+    public String getObservacao()
     {
-        return descricao;
+        return observacao;
     }
-    public void setDescricao(String descricao)
+    public void setObservacao(String observacao)
     {
-        this.descricao = descricao;
+        this.observacao = observacao;
+    }
+    @ManyToOne
+    public Aluno getAluno()
+    {
+        return aluno;
+    }
+    public void setAluno(Aluno aluno)
+    {
+        this.aluno = aluno;
     }
     
-    @OneToMany
-    @JoinColumn(name="turma")
-    public List<Matricula> getMatriculas()
+    @ManyToOne
+    public Turma getTurma()
     {
-        return matriculas;
+        return turma;
     }
-    public void setMatriculas(List<Matricula> matriculas)
+    public void setTurma(Turma turma)
     {
-        this.matriculas = matriculas;
+        this.turma = turma;
     }
-
+    public String getPagamento()
+    {
+        return pagamento;
+    }
+    public void setPagamento(String pagamento)
+    {
+        this.pagamento = pagamento;
+    }
     @Override
     public int hashCode()
     {
@@ -64,13 +78,15 @@ public class Turma
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Turma other = (Turma) obj;
+        Matricula other = (Matricula) obj;
         if (codigo != other.codigo)
             return false;
         return true;
     }
     
     
-
     
+    
+    
+
 }

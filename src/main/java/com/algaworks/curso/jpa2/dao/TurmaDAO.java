@@ -28,13 +28,13 @@ public class TurmaDAO implements Serializable
     }
     
     @SuppressWarnings("unckeded")
-    public List<Turma> buscarTodos(){
+    public List<Turma> buscarTodas(){
         return manager.createQuery("From Turma").getResultList();
     }
     
     @Transactional
     public void excluir(Turma turma)throws NegocioException {
-        turma = buscarpelocodigo(turma.getCodigo());
+        turma = manager.find(Turma.class, turma.getCodigo());
         try {
             manager.remove(turma);
             manager.flush();

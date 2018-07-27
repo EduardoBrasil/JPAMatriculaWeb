@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -15,7 +14,7 @@ public class Aluno {
     private long codigo;
     private String nome;
     private String matricula;
-    private List<Turma> turmas;
+    private List<Matricula> qdtMatriculas;
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -48,17 +47,16 @@ public class Aluno {
     {
         this.matricula = matricula;
     }
-
-    @OneToMany
-    @JoinColumn(name="codigo_Turma")
-    public List<Turma> getTurmas()
+    
+    @OneToMany(mappedBy ="aluno")
+    public List<Matricula> getQdtMatriculas()
     {
-        return turmas;
+        return qdtMatriculas;
     }
 
-    public void setTurmas(List<Turma> turmas)
+    public void setQdtMatriculas(List<Matricula> qdtMatriculas)
     {
-        this.turmas = turmas;
+        this.qdtMatriculas = qdtMatriculas;
     }
 
     @Override
